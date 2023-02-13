@@ -37,8 +37,9 @@ async function login_user() {
 
     if (server_response.status === 200) {
         user_nav.classList.remove("hidden");
+        document.querySelector(".login_page").classList.add("hidden");
         user_name_display.textContent = document.querySelector("#login_username_input").value;
-        initate_quiz();
+        load_quiz_question();
     }
 
     if (server_response.status === 404) {

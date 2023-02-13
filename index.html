@@ -14,11 +14,11 @@
     <div id="main_container">
         <div id="top_container">
             <div class="logo_Container">
-                <img src="./media/logo.png" alt="Dogo_logo">
+                <img src="./media/logo.png" alt="Dogo_logo" id="test_button">
                 <p>Dog Breed quiz</p>
             </div>
 
-            <div class="user_nav_container hidden">
+            <div class="user_nav_container">
                 <p id="user_name_display"></p>
                 <button id="logout_button">Logout</button>
             </div>
@@ -27,7 +27,7 @@
 
 
         <div id="main_content_container">
-            <div class="login_page login_register_container">
+            <div class="login_page login_register_container hidden">
                 <h1>Login</h1>
                 <form class="login_and_Register_form">
                     <label for="login_username_input">User Name:</label>
@@ -52,14 +52,21 @@
                 <button id="register_button">Register</button>
                 <p class="link" id="to_login_page_button">Already have an account? Sign up here</p>
             </div>
+
+            <div class="quiz_container">
+                <div id="dog_image_container">
+                </div>
+                <div id="answers_container">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
             
         </div>
 
-
-
-
-
-        <footer>The Dog Breed Quiz is made possible thanks to the free API by <a href="">DOG CEO Zine</a></footer>
+        <footer>The Dog Breed Quiz is made possible thanks to the free API by <a target="_blank" href="https://dog.ceo/dog-api">DOG CEO Zine</a></footer>
 
 
 

@@ -6,6 +6,8 @@
 
     height: 65%;
     width: 100%;
+    
+    border: 2px solid lightcoral;
 }
 
 #login_register_container > h1{

@@ -34,6 +34,12 @@ async function fetch_server_response(credentials_object, user_action) {
         request = prefix + `?action=check_credentials&user_name=${attepmpted_user_name}&password=${attempted_password}`;
     }
 
+    if (user_action === "load new quiz question") {
+        console.log("test");
+        return 
+        request = `https://dog.ceo/api/breed/${dog_breed}/images`
+    }
+
 
     try {
         const server_response = await fetch(request);

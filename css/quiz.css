@@ -1,0 +1,25 @@
+.quiz_container{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+
+    height: 65%;
+    width: 100%;
+}
+
+#dog_image_container{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(/media/dog_test_image1.jpg);
+}
+
+#answers_container{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#answers_container > div{
+    background-color: rgb(234, 234, 234);
+    border-radius: 10px;
+}
