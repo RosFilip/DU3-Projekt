@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog quiz</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/quiz.css">
+    <link rel="stylesheet" href="./css/register_login.css">
+</head>
+<body>
+
+    <div id="main_container">
+        <div id="top_container">
+            <div class="logo_Container">
+                <img src="./media/logo.png" alt="Dogo_logo">
+                <p>Dog Breed quiz</p>
+            </div>
+
+            <div class="user_nav_container hidden">
+                <p id="user_name_display"></p>
+                <button id="logout_button">Logout</button>
+            </div>
+        </div>
+
+
+
+        <div id="main_content_container">
+            <div class="login_page login_register_container">
+                <h1>Login</h1>
+                <form class="login_and_Register_form">
+                    <label for="login_username_input">User Name:</label>
+                    <input type="text" id="login_username_input">
+                    <label for="login_password_input">Password</label>
+                    <input type="text" id="login_password_input">
+                </form>
+                <div>Let the magic start:</div>
+                <button id="login_button">Login</button>
+                <p class="link" id="to_register_page_button">New to this? Sign up for free</p>
+            </div>
+
+            <div class="register_page login_register_container hidden">
+                <h1>Register</h1>
+                <form class="login_and_Register_form">
+                    <label for="register_username_input">User Name:</label>
+                    <input type="text" id="register_username_input">
+                    <label for="register_password_input">Password</label>
+                    <input type="text" id="register_password_input">
+                </form>
+                <div>Ready when you are</div>
+                <button id="register_button">Register</button>
+                <p class="link" id="to_login_page_button">Already have an account? Sign up here</p>
+            </div>
+            
+        </div>
+
+
+
+
+
+        <footer>The Dog Breed Quiz is made possible thanks to the free API by <a href="">DOG CEO Zine</a></footer>
+
+
+
+    </div>
+    <div class="overlay hidden">
+        <div id="user_message">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, sapiente?</p>
+            <button class="closer_overlay_button hidden">CLOSE</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./js/data.js"></script>
+    <script src="./js/server_connection.js"></script>
+    <script src="./js/login_register.js"></script>
+    <script src="./js/quiz.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
