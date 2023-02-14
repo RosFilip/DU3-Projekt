@@ -4,9 +4,28 @@ const login_button = document.querySelector("#login_button");
 const register_button = document.querySelector("#register_button");
 const user_nav = document.querySelector(".user_nav_container");
 const user_name_display = document.querySelector("#user_name_display");
+const logout_button = document.querySelector("#logout_button");
+const quiz_container = document.querySelector(".quiz_container");
+const login_page = document.querySelector(".login_page");
+const register_page = document.querySelector(".register_page");
+
+const login_user_name_input = document.querySelector("#login_username_input");
+const login_user_password_input = document.querySelector("#login_password_input");
+const register_user_name_input = document.querySelector("#register_username_input");
+const register_user_password_input = document.querySelector("#register_password_input");
 
 go_to_register_page_button.addEventListener("click", change_login_register_format);
 go_to_login_page_button.addEventListener("click", change_login_register_format);
+login_button.addEventListener("click", login_user);
+register_button.addEventListener("click", register_user);
+logout_button.addEventListener("click", ()=> {
+    localStorage.removeItem("username");
+    localStorage.removeItem("logged_in");
+    user_nav.classList.add("hidden");
+    quiz_container.classList.add("hidden");
+    login_page.classList.remove("hidden");
+
+})
 
 function change_login_register_format() {
     document.querySelector(".login_page").classList.toggle("hidden");
@@ -22,25 +41,32 @@ function change_login_register_format() {
 }
 
 
-login_button.addEventListener("click", login_user);
-register_button.addEventListener("click", register_user);
-
-
 
 async function login_user() {
     const server_response = await fetch_server_response({
-        user_name: document.querySelector("#login_username_input").value,
-        password: document.querySelector("#login_password_input").value,
+        user_name: login_user_name_input.value,
+        password: login_user_password_input.value,
     },
     "login user")
     console.log(server_response);
 
     if (server_response.status === 200) {
+        login_successful();
+    }
+
+    function login_successful(params) {
+        localStorage.setItem("username", `${login_user_name_input.value}`)
+        localStorage.setItem("logged_in", `true`);
         user_nav.classList.remove("hidden");
-        document.querySelector(".login_page").classList.add("hidden");
-        user_name_display.textContent = document.querySelector("#login_username_input").value;
-        document.querySelector("#quiz_container").classList.remove("hidden");
-        load_quiz_question();
+        login_page.classList.add("hidden");
+        quiz_container.classList.remove("hidden");
+        user_name_display.textContent = login_user_name_input.value;
+        login_user_name_input.value = "";
+        login_user_password_input.value = "";
+        register_user_password_input.value = "";
+        register_user_name_input.value = "";
+
+        test___load_quiz_question();
     }
 
     if (server_response.status === 404) {
@@ -59,8 +85,8 @@ async function login_user() {
 
 async function register_user() {
     const server_response = await fetch_server_response({
-        user_name: document.querySelector("#login_username_input").value,
-        password: document.querySelector("#login_password_input").value,
+        user_name: register_user_name_input.value,
+        password: register_user_password_input.value,
     },
     "register user")
     console.log(server_response);

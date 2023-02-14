@@ -35,6 +35,7 @@ async function fetch_server_response(credentials_object, user_action, random_dog
     }
 
     if (user_action === "load new quiz question") {
+        console.log("test");
         overlay_message.textContent = "Loading new question"
         request = `https://dog.ceo/api/breed/${random_dog_breed_url}/images` 
     }
@@ -43,6 +44,7 @@ async function fetch_server_response(credentials_object, user_action, random_dog
     try {
         const server_response = await fetch(request);
         const resource = await server_response.json();
+        console.log(resource);
         if (user_action === "load new quiz question") {
             return resource
         } else {
@@ -53,65 +55,3 @@ async function fetch_server_response(credentials_object, user_action, random_dog
         close_overlay_button.classList.remove("hidden");
     }
 }
-
-/*
-    if (user_action === "register user") {
-
-        try {
-            const register_request_post = new Request(prefix, options)
-            const server_response = await fetch(register_request_post);
-            console.log(server_response);
-            if (server_response.status === 200) {
-                overlay_message.textContent = "Registration successful! Proceed to login";
-                close_overlay_button.classList.remove("hidden");
-            }
-            if (server_response.status === 409) {
-                overlay_message.textContent = "We're sorry that username is already in use, please try another";
-                close_overlay_button.classList.remove("hidden");
-            }
-            
-        } catch (error) {
-            overlay_message.textContent = "Sorry an unexpetced error has occured :( please wait and try again in a minute.";
-            close_overlay_button.classList.remove("hidden");
-        }
-
-    }
-
-    if (user_action === "login user") {
-        let request_url = prefix + `?action=check_credentials&user_name=${attepmpted_user_name}&password=${attempted_password}`;
-        console.log(request_url);
-        const server_response = await fetch(request_url);
-        console.log(server_response);
-        const test = await server_response.json();
-        console.log(test);
-        if (server_response.status === 200) {
-            overlay_message.textContent = "Whoopsie the server thinks it's a teapot :d";
-            close_overlay_button.classList.remove("hidden");
-
-
-        }
-
-        if (server_response.status === 404) {
-            overlay_message.textContent = "No user found, please check your username and password again";
-            close_overlay_button.classList.remove("hidden");
-        }
-
-        if (server_response.status === 418) {
-            overlay_message.textContent = "Whoopsie the server thinks it's a teapot :d";
-            close_overlay_button.classList.remove("hidden");
-        }
-    }
-}
-*/
-
-/*
-test_user
-test123
-
-{
-action: “register”,
-user_name: string, username to register
-password: string, password to register
-}
-
-*/

@@ -18,7 +18,7 @@
                 <p>Dog Breed quiz</p>
             </div>
 
-            <div class="user_nav_container">
+            <div class="user_nav_container hidden">
                 <p id="user_name_display"></p>
                 <button id="logout_button">Logout</button>
             </div>
@@ -27,7 +27,7 @@
 
 
         <div id="main_content_container">
-            <div class="login_page login_register_container hidden">
+            <div class="login_page login_register_container">
                 <h1>Login</h1>
                 <form class="login_and_Register_form">
                     <label for="login_username_input">User Name:</label>
@@ -53,7 +53,7 @@
                 <p class="link" id="to_login_page_button">Already have an account? Sign up here</p>
             </div>
 
-            <div class="quiz_container">
+            <div class="quiz_container hidden">
                 <div id="dog_image_container">
                     <img src="./media/logo.png" alt="">
                 </div>
@@ -68,11 +68,11 @@
 
 
     </div>
-    <div class="overlay">
+    <div class="overlay hidden">
         <div id="overlay_message_container">
             <p></p>
             <button class="close_overlay_button hidden">CLOSE</button>
-            <button class="next_question_button ">One more</button>
+            <button class="next_question_button hidden">One more</button>
         </div>
     </div>
 
