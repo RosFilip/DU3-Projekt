@@ -39,6 +39,7 @@ async function login_user() {
         user_nav.classList.remove("hidden");
         document.querySelector(".login_page").classList.add("hidden");
         user_name_display.textContent = document.querySelector("#login_username_input").value;
+        document.querySelector("#quiz_container").classList.remove("hidden");
         load_quiz_question();
     }
 
