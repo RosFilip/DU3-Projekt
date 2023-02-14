@@ -35,7 +35,6 @@ async function fetch_server_response(credentials_object, user_action, random_dog
     }
 
     if (user_action === "load new quiz question") {
-        console.log("test");
         overlay_message.textContent = "Loading new question"
         request = `https://dog.ceo/api/breed/${random_dog_breed_url}/images` 
     }
@@ -44,7 +43,6 @@ async function fetch_server_response(credentials_object, user_action, random_dog
     try {
         const server_response = await fetch(request);
         const resource = await server_response.json();
-        console.log(resource);
         if (user_action === "load new quiz question") {
             return resource
         } else {

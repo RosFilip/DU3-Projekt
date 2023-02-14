@@ -48,7 +48,6 @@ async function login_user() {
         password: login_user_password_input.value,
     },
     "login user")
-    console.log(server_response);
 
     if (server_response.status === 200) {
         login_successful();

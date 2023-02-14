@@ -1,8 +1,6 @@
 function check_if_alerady_logged_in() {
     const logged_in_username = localStorage.getItem("username");
     const logged_in = localStorage.getItem("logged_in")
-    console.log(logged_in);
-    console.log(logged_in_username);
 
     if (logged_in === "true") {
         login_page.classList.add("hidden");

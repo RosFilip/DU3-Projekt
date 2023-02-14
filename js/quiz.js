@@ -30,7 +30,7 @@ async function test___load_quiz_question() {
             i++
         }
     }
-    
+
     const random_right_answer = dog_breeds_picked[Math.floor(Math.random() * 4)];
     answers_container.innerHTML = ""
     for (const dog_breed of dog_breeds_picked) {
@@ -56,12 +56,8 @@ async function test___load_quiz_question() {
         answers_container.append(quiz_answer_dom);
     }
 
-
-    console.log(random_right_answer);
     const dog_images = await fetch_server_response({}, "load new quiz question", random_right_answer.url)
     overlay.classList.add("hidden");
-
-
     const random_dog_image_url = dog_images.message[Math.floor(Math.random() * dog_images.message.length)];
     document.querySelector("#dog_image_container > img").src = random_dog_image_url;
 
