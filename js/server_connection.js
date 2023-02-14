@@ -7,7 +7,7 @@ close_overlay_button.addEventListener("click", ()=>{
     overlay.classList.add("hidden")
 })
 
-async function fetch_server_response(credentials_object, user_action) {
+async function fetch_server_response(credentials_object, user_action, random_dog_breed) {
     overlay_message.textContent = "Contacting server..."
     close_overlay_button.classList.add("hidden")
     overlay.classList.remove("hidden");
