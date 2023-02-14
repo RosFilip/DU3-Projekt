@@ -1,13 +1,13 @@
 const prefix = "https://teaching.maumt.se/apis/access/";
 const overlay = document.querySelector(".overlay");
 const overlay_message = document.querySelector(".overlay > div > p");
-const close_overlay_button = document.querySelector(".closer_overlay_button");
+const close_overlay_button = document.querySelector(".close_overlay_button");
 
 close_overlay_button.addEventListener("click", ()=>{
     overlay.classList.add("hidden")
 })
 
-async function fetch_server_response(credentials_object, user_action, random_dog_breed) {
+async function fetch_server_response(credentials_object, user_action, random_dog_breed_url) {
     overlay_message.textContent = "Contacting server..."
     close_overlay_button.classList.add("hidden")
     overlay.classList.remove("hidden");
@@ -35,17 +35,19 @@ async function fetch_server_response(credentials_object, user_action, random_dog
     }
 
     if (user_action === "load new quiz question") {
-        console.log("test");
-        return 
-        request = `https://dog.ceo/api/breed/${dog_breed}/images`
+        overlay_message.textContent = "Loading new question"
+        request = `https://dog.ceo/api/breed/${random_dog_breed_url}/images` 
     }
 
 
     try {
         const server_response = await fetch(request);
-        const user_resource = await server_response.json();
-        console.log(user_resource);
-        return server_response;
+        const resource = await server_response.json();
+        if (user_action === "load new quiz question") {
+            return resource
+        } else {
+            return server_response;
+        }
     } catch (error) {
         overlay_message.textContent = "Sorry an unexpetced error has occured :( please wait and try again in a minute.";
         close_overlay_button.classList.remove("hidden");
