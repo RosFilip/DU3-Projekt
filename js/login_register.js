@@ -8,6 +8,7 @@ const logout_button = document.querySelector("#logout_button");
 const quiz_container = document.querySelector(".quiz_container");
 const login_page = document.querySelector(".login_page");
 const register_page = document.querySelector(".register_page");
+const login_failed_message = document.querySelector(".login_failed_message");
 
 const login_user_name_input = document.querySelector("#login_username_input");
 const login_user_password_input = document.querySelector("#login_password_input");
@@ -30,6 +31,7 @@ logout_button.addEventListener("click", ()=> {
 function change_login_register_format() {
     document.querySelector(".login_page").classList.toggle("hidden");
     document.querySelector(".register_page").classList.toggle("hidden");
+    login_failed_message.classList.add("hidden")
 
     if (document.querySelector(".login_page").classList.contains("hidden")) {
         document.body.style.transition = "1.5s"
@@ -69,8 +71,13 @@ async function login_user() {
     }
 
     if (server_response.status === 404) {
-        overlay_message.textContent = "No user found, please check your username and password again";
-        close_overlay_button.classList.remove("hidden");
+        overlay.classList.add("hidden");
+        login_failed_message.classList.remove("fade")
+        login_failed_message.classList.remove("hidden");
+        login_failed_message.style.opacity = "1s";
+        setTimeout(()=>{
+            login_failed_message.classList.add("fade")
+        }, 8000)
     }
 
     if (server_response.status === 418) {
