@@ -137,7 +137,7 @@ body{
     height: 100vh;
 }
 
-.overlay > div{
+#overlay_message_container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -151,6 +151,10 @@ body{
 
     font-size: 24px;
     font-weight: 600;
+}
+
+#overlay_message_container > button{
+    margin-top: 10px;
 }
 
 footer{
