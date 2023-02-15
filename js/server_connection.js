@@ -43,10 +43,14 @@ async function fetch_server_response(credentials_object, user_action, random_dog
     try {
         const server_response = await fetch(request);
         const resource = await server_response.json();
+        let server_objekt = {
+            server_response: server_response,
+            resource: resource,
+        }
         if (user_action === "load new quiz question") {
             return resource
         } else {
-            return server_response;
+            return server_objekt
         }
     } catch (error) {
         overlay_message.textContent = "Sorry an unexpetced error has occured :( please wait and try again in a minute.";

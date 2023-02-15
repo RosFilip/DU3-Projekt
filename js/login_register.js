@@ -45,42 +45,28 @@ function change_login_register_format() {
 
 
 async function login_user() {
-    const server_response = await fetch_server_response({
+    const server_objekt = await fetch_server_response({
         user_name: login_user_name_input.value,
         password: login_user_password_input.value,
-    },
-    "login user")
+    },"login user")
+    let server_response_status = server_objekt.server_response.status
 
-    if (server_response.status === 200) {
-        login_successful();
+    if (server_response_status === 200) {
+        let user_name = server_objekt.resource.data.user_name
+        login_successful(user_name);
     }
 
-    function login_successful(params) {
-        localStorage.setItem("username", `${login_user_name_input.value}`)
-        localStorage.setItem("logged_in", `true`);
-        user_nav.classList.remove("hidden");
-        login_page.classList.add("hidden");
-        quiz_container.classList.remove("hidden");
-        user_name_display.textContent = login_user_name_input.value;
-        login_user_name_input.value = "";
-        login_user_password_input.value = "";
-        register_user_password_input.value = "";
-        register_user_name_input.value = "";
-
-        test___load_quiz_question();
-    }
-
-    if (server_response.status === 404) {
+    if (server_response_status === 404) {
         overlay.classList.add("hidden");
         login_failed_message.classList.remove("fade")
         login_failed_message.classList.remove("hidden");
         login_failed_message.style.opacity = "1s";
         setTimeout(()=>{
             login_failed_message.classList.add("fade")
-        }, 8000)
+        }, 6000)
     }
 
-    if (server_response.status === 418) {
+    if (server_response_status === 418) {
         overlay_message.textContent = "Whoopsie the server thinks it's a teapot :d";
         close_overlay_button.classList.remove("hidden");
     }
@@ -88,25 +74,43 @@ async function login_user() {
 }
 
 
+function login_successful(user_name) {
+    localStorage.setItem("username", `${user_name}`)
+    localStorage.setItem("logged_in", `true`);
+    user_nav.classList.remove("hidden");
+    login_page.classList.add("hidden");
+    quiz_container.classList.remove("hidden");
+    user_name_display.textContent = user_name;
+    login_user_name_input.value = "";
+    login_user_password_input.value = "";
+    register_user_password_input.value = "";
+    register_user_name_input.value = "";
+
+    test___load_quiz_question();
+}
+
+
 
 async function register_user() {
-    const server_response = await fetch_server_response({
+    const server_objekt = await fetch_server_response({
         user_name: register_user_name_input.value,
         password: register_user_password_input.value,
     },
     "register user")
-    console.log(server_response);
+    console.log(server_objekt);
+    let server_response_status = server_objekt.server_response.status
+    console.log(server_response_status);
 
-    if (server_response.status === 200) {
+    if (server_response_status === 200) {
         overlay_message.textContent = "Registration successful! Proceed to login";
         close_overlay_button.classList.remove("hidden");
     }
-    if (server_response.status === 409) {
+    if (server_response_status === 409) {
         overlay_message.textContent = "We're sorry that username is already in use, please try another";
         close_overlay_button.classList.remove("hidden");
     }
 
-    if (server_response.status === 418) {
+    if (server_response_status === 418) {
         overlay_message.textContent = "Whoopsie the server thinks it's a teapot :d";
         close_overlay_button.classList.remove("hidden");
     }
