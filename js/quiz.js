@@ -3,18 +3,9 @@ const answers_container = document.querySelector("#answers_container");
 const one_more_question_button = document.querySelector(".next_question_button");
 const overlay_message_container = document.querySelector("#overlay_message_container")
 
-function load_quiz_question() {
-    Math.floor(math.random() * ALL_BREEDS.length)
+one_more_question_button.addEventListener("click", load_quiz_question);
 
-    const dog = fetch_server_response({}, "load new quiz question")
-}
-
-const test_button = document.querySelector("#test_button");
-
-test_button.addEventListener("click", load_quiz_question);
-one_more_question_button.addEventListener("click", test___load_quiz_question);
-
-async function test___load_quiz_question() {
+async function load_quiz_question() {
     document.querySelector("#dog_image_container > img").src = "./media/logo.png"
     overlay_message_container.style.backgroundColor = "white"
     one_more_question_button.classList.add("hidden");

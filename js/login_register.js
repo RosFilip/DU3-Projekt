@@ -86,7 +86,7 @@ function login_successful(user_name) {
     register_user_password_input.value = "";
     register_user_name_input.value = "";
 
-    test___load_quiz_question();
+    load_quiz_question();
 }
 
 
