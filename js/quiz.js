@@ -1,4 +1,3 @@
-const dog_image = document.querySelector("#dog_image_container");
 const answers_container = document.querySelector("#answers_container");
 const one_more_question_button = document.querySelector(".next_question_button");
 const overlay_message_container = document.querySelector("#overlay_message_container")

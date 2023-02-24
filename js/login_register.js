@@ -9,7 +9,6 @@ const quiz_container = document.querySelector(".quiz_container");
 const login_page = document.querySelector(".login_page");
 const register_page = document.querySelector(".register_page");
 const login_failed_message = document.querySelector(".login_failed_message");
-
 const login_user_name_input = document.querySelector("#login_username_input");
 const login_user_password_input = document.querySelector("#login_password_input");
 const register_user_name_input = document.querySelector("#register_username_input");
@@ -64,6 +63,11 @@ async function login_user() {
         setTimeout(()=>{
             login_failed_message.classList.add("fade")
         }, 6000)
+    }
+
+    if (server_response_status === 400) {
+        overlay_message.textContent = "Username or password is empty";
+        close_overlay_button.classList.remove("hidden");
     }
 
     if (server_response_status === 418) {
